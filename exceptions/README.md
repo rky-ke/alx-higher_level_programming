@@ -1,87 +1,71 @@
-# Python - Exceptions
+# Python - More Classes and Objects
 
-In this project, I learned handling errors and exceptions in Python with `try` and `except`.
+In this project, I continued to practice object-oriented programming in Python. I learned about class methods, static methods, class vs instance attributes, andbhow to use the special `__str__` and `__repr__` methods.
 
+## Tests :heavy_check_mark:
 
-## Function Prototypes :floppy_disk:
-
-Prototypes for functions written in this project:
-
-| File                             | Prototype                                               |
-| -------------------------------- | ------------------------------------------------------- |
-| `0-safe_print_list.py`           | `def safe_print_list(my_list=[], x=0):`                 |
-| `1-safe_print_integer.py`        | `def safe_print_integer(value):`                        |
-| `2-safe_print_list_integers.py`  | `def safe_print_list_integers(my_list=[], x=0):`        |
-| `3-safe_print_division.py`       | `def safe_print_division(a, b):`                        |
-| `4-list_division.py`             | `def list_division(my_list_1, my_list_2, list_length):` |
-| `5-raise_exception.py`           | `def raise_exception():`                                |
-| `6-raise_exception_msg.py`       | `def raise_exception_msg(message=""):`                  |
-| `100-safe_print_integer_err.py`  | `def safe_print_integer_err(value):`                    |
-| `101-safe_function.py`           | `def safe_function(fct, *args):`                        |
-| `102-magic_calculation.py`       | `def magic_calculation(a, b);`                          |
-| `103-python.c`                   | <ul><li>`void print_python_list(PyObject *p);`</li><li>`void print_python_bytes(PyObject *p);`</li><li>`void print_python_float(PyObject *p);`</li></ul> |
+* [tests](./tests): Folder of test files. Provided by Holberton School.
 
 ## Tasks :page_with_curl:
 
-* **0. Safe list printing**
-  * [0-safe_print_list.py](./0-safe_print_list.py): Python function that prints `x` elements of a list on the same line, followed by a new line.
-  * The parameter `x` represents the number of elements to print - can be
-  bigger than the length of `my_list`.
-  * Returns the real number of elements printed.
-  * Without importing modules or using `len()`.
+* **0. Simple rectangle**
+  * [0-rectangle.py](./0-rectangle.py): Empty Python class that defines a rectangle.
 
-* **1. Safe printing of an integers list**
-  * [1-safe_print_integer.py](./1-safe_print_integer.py): Python function that prints an integer in `"{:d}".format()` format.
-  * The parameter `value` can be any type.
-  * Returns `True` if `value` was printed correctly (ie. was an integer), `False` otherwise.
-  * Without importing modules or using `type()`.
+* **1. Real definition of a rectangle**
+  * [1-rectangle.py](./1-rectangle.py): Python class that defines a rectangle. Builds on [0-rectangle.py](./0-rectangle.py) with:
+    * Private instance attribute `width`.
+    * Property getter `def width(self):` to get `width`.
+    * Property setter `def width(self, value):` to set `width`.
+    * Private instance attribute `height`.
+    * Property getter `def height(self):` to get `height`.
+    * Property setter `def height(self, value):` to set `height`.
+    * Instantiation with optional `width` and `height`: `def __init(self,   width=0, height=0):`
+  * If either of `width` or `height` is not an integer, a `TypeError` is raised with the message `width must be an integer` or `height must be an integer`.
+  * If either of `width` or `height` is less than `0`, a `ValueError` is raised with the message `width must be >= 0` or `height must be >= 0`.
 
-* **2. Print and count integers**
-  * [2-safe_print_list_integers.py](./2-safe_print_list_integers.py): Python function that prints the first `x` elements of a list that are integers on the same line, followed by a new line.
-  * The parameter `my_list` can contain any type.
-  * The parameter `x` represents the number of elements to print - can be bigger than the length of `my_list`.
-  * Reutnrs the real number of integers printed.
-  * Without importing modules or using `len()`.
+* **2. Area and Perimeter**
+  * [2-rectangle.py](./2-rectangle.py): Python class that defines a rectangle. Builds on [1-rectangle.py](./1-rectangle.py) with:
+    * Public instance method `def area(self):` that returns the area of the rectangle.
+    * Public instance attribute `def perimeter(self):` that returns the permiter of the rectangle (if either of `width` or `height` equals `0`, the perimeter is `0`).
 
-* **3. Integers division with debug**
-  * [3-safe_print_division.py](./3-safe_print_division.py): Python function that divides two integers and prints the result using `finally:`.
-  * The function assumes that the arguments are integers.
-  * Upon success, returns the value of the division; otherwise - returns `None`.
-  * Without importing modules.
+* **3. String representation**
+  * [3-rectangle.py](./3-rectangle.py): Python class that defines a rectangle. Builds on [2-rectangle.py](./2-rectangle.py) with:
+    * Special method `__str__` to print the rectangle with the `#` character (if either of `width` or `height` equals `0`, the method returns an empty
+    string.).
 
-* **4. Divide a list**
-  * [4-list_division.py](./4-list_division.py): Python function that divides two lists element by element.
-  * Returns a new list of length `list_length` with all divisions.
-  * The lists `my_list_1` and `my_list_2` can contain any type.
-  * The parameter `list_length` can be larger than the lengths of either list.
-  * If an element is not an integer or float, the function prints `wrong type`.
-  * If the division cannot be done, the result of the division is `0` and the function prints: `division by 0`.
-  * If either of `my_list_1` or `my_list_2` are too short, the function prints: `out of range`.
-  * Without importing modules.
+* **4. Eval is magic**
+  * [4-rectangle.py](./4-rectangle.py): Python class that defines a rectangle. Builds on [3-rectangle.py](./3-rectangle.py) with:
+    * Special method `__repr__` to return a string representation of the rectangle.
 
-* **5. Raise exception**
-  * [5-raise_exception.py](./5-raise_exception.py): Python function that raises a type exception.
-  * Without importing modules.
+* **5. Detect instance deletion**
+  * [5-rectangle.py](./5-rectangle.py): Python class that defines a rectangle. Builds on [4-rectangle.py](./4-rectangle.py) with:
+    * Special method `__del__` that prints the message `Bye rectangle...` when a `Rectangle` is deleted.
 
-* **6. Raise a message**
-  * [6-raise_exception_msg.py](./6-raise_exception_msg.py): Python function that raises a name exception with a message.
-  * Without importing modules.
+* **6. How many instances**
+  * [6-rectangle.py](./6-rectangle.py): Python class that defines a rectangle. Builds on [5-rectangle.py](./5-rectangle.py) with:
+    * Public class attribute `number_of_instances` that is initialized to `0`, incremented for each new instantiation, and decremened for each instance deletion.
 
-* **7. Safe integer print with error message**
-  * [100-safe_print_integer_err.py](./100-safe_print_integer_err.py): Python function that prints an integer with type-checking in `"{:d}".format())` format.
-  * The paramter `value` can be any type.
-  * Returns `True` if `value` was printed correctly (ie. was an integer).
-  * Otherwise, prints an exception error to `stderr` and returns `False`.
-  * Without importing modules.
+* **7. Change representation**
+  * [7-rectangle.py](./7-rectangle.py): Python class that defines a rectangle. Builds on [6-rectangle.py](./6-rectangle.py) with:
+    * Public class attribute `class_symbol` that is initialized to `#` but can be any type - used as the symbol for string representation.
 
-* **8. Safe function**
-  * [101-safe_function.py](./101-safe_function.py): Python function that executes a function safely.
-  * The function assumes that the parameter `fct` is always a pointer to a function.
-  * Upon success, returns the result of the function.
-  * Otherwise, prints an en exception error to `stderr` and returns `None`.
+* **8. Compare rectangles**
+  * [8-rectangle.py](./8-rectangle.py): Python class that defines a rectangle. Builds on [7-rectangle.py](./7-rectangle.py) with:
+    * Static method `def bigger_or_equal(rect_1, rect_2):` that returns the rectangle with the greater area (returns `rect_1` if both areas are equal).
+    * If either of `rect_1` or `rect_2` is not a `Rectangle` instance, a `TypeError` is raised with the message `rect_1 must be an instance of Rectangle` or `rect_2 must be an instance of Rectangle`.
 
-* **9. ByteCode -> Python #4**
-  * [102-magic_calculation.py](./102-magic_calculation.py): Python function matching exactly a bytecode provided by ALX-Africa.
+* **9. A square is a rectangle**
+  * [9-rectangle.py](./9-rectangle.py): Python class that defines a rectangle. Builds on [8-rectangle.py](./8-rectangle.py) with:
+    * Class method `def square(cls, size=0):` that returns a new `Rectangle` instance with `width == height == size`.
 
-* **10. CPython #2: PyFloatObject**
-  * [103-python.c](./103-python.c): C functions that print basic information  about Python lists, bytes, and float objects.
+* **10. N Queens**
+
+ ![alt text](http://www.crestbook.com/files/Judit-photo1_602x433.jpg)
+ 
+  * [101-nqueens.py](./101-nqueens.py): Python program that solves the [N queens puzzle](https://en.wikipedia.org/wiki/Eight_queens_puzzle).
+  * Usage: `./101-nqueens.py N`
+  * Determines all possible solutions for placing N non-attacking queens on an NxN chessboard.
+  * Exactly two arguments must be provided. Otherwise, the program prints `Usage: nqueens N` and exits with the status `1`.
+  * If the provided `N` is not an integer, the program prints `N must be a number` and exits with the status `1`.
+  * If the provided `N` is less than `4`, the program prints `N must be at least 4` and exits with the status `1`.
+  * Solutions are printed one per line in the format `[[r, c], [r, c], [r, c], [r, c]]` where `r` and `c` represent the row and column, respectively, where a queen must be placed.
