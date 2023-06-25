@@ -1,5 +1,5 @@
 #!/usr/bin/node
-let command = process.argv;
+const command = process.argv;
 if (command.length === 2) {
   console.log('No Argument');
 } else if (command.length === 3) {
