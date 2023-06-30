@@ -8,7 +8,7 @@ function add(a,b) {
   console.log(sum);
 }
 
-if (a!== undefined && b !== undefined) {
+if (a !== undefined && b !== undefined) {
   add(a, b);
 } else {
   console.log('NaN');
