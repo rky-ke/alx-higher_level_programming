@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+"""Fetches the URL: https://intranet.hbtn.io/status
+with `requests` module
 """
-Python script that fetches an URL with requests package
-"""
+
 import requests
+
 
 if __name__ == "__main__":
     req = requests.get('https://intranet.hbtn.io/status')
